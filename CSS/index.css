@@ -1,0 +1,58 @@
+body {
+    font-family: Verdana;
+    margin: 0 auto;
+    width: 80%;
+}
+
+/* ==================================================================================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1;
+    grid-auto-rows: auto;
+}
+
+/* ==================================================================================== */
+
+.header {
+    background-color: rgb(255, 196, 0);
+    height: 160px;
+}
+
+/* ==================================================================================== */
+
+.navigationBar {
+    background-color: rgb(0, 204, 255);
+    height: 40px;
+}
+
+.navButton {
+    background-color: rgb(0, 204, 255);
+    float: left;
+
+    height: 100%;
+    width: 6rem;
+
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    padding: 7px 0;
+}
+
+.navButton:hover{
+    background-color: rgb(3, 183, 228);
+}
+
+/* ==================================================================================== */
+
+.body {
+    background-color: rgb(102, 246, 145);
+}
+
+/* ==================================================================================== */
+
+.footer {
+    background-color: rgb(255, 6, 27);
+    height: 40px;
+}
