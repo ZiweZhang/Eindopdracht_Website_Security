@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Website</title>
+  <link href="../CSS/index.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="grid">
+    <header></header>
+
+    <section id="navigationBar">
+      <a class="navigationButton" href="../index.html">Home</a>
+      <a class="navigationButton" href="https://www.google.com/">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+
+      <a class="navigationButton" href="login.html" style="float: right;">Login</a>
+    </section>
+
+    <section class="content">
+      <form action="#action">
+        <div class="container">
+          <label><b>Naam</b></label>
+          <input type="text" placeholder="Voornaam" name="voornaam" required>
+          <input type="text" placeholder="Achternaam" name="achternaam" required>
+
+          <label><b>Emailadres</b></label>
+          <input type="text" placeholder="Emailadres" name="emailadres" required>
+
+          <label><b>Wachtwoord</b></label>
+          <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
+
+          <label><b>Herhaal wachtwoord</b></label>
+          <input type="password" placeholder="Wachtwoord" name="wachtwoord_herhaal" required>
+
+          <button type="button"><a href="../index.html">Annuleren</a></button>
+          <button type="submit">Aanmelden</button>
+        </div>
+
+      </form>
+
+      <div>
+        <p>Al account?</p>
+        <button type="button"><a href=login.html>klik hier om in te loggen</a></button>
+      </div>
+
+    </section>
+
+    <footer id="footer">
+      <div>footer</div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.onscroll = function () { myFunction(), scrollFunction() };
+
+    var navbar = document.getElementById("navigationBar");
+    var navbutton = navbar.getElementsByClassName("navigationButton");
+
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        for (let index = 0; index < navbutton.length; index++) {
+          navbutton[index].style.padding = "7px 0";
+        }
+      } else {
+        for (let index = 0; index < navbutton.length; index++) {
+          navbutton[index].style.padding = "20px 0";
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

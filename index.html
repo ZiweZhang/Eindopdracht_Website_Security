@@ -13,15 +13,15 @@
     <header></header>
 
     <section id="navigationBar">
-      <a href="#footer">test</a>
-      <a href="https://www.google.com/">test</a>
-      <a href="#test">test</a>
-      <a href="#test">test</a>
-      <a href="#test">test</a>
-      <a href="#test">test</a>
-      <a href="#test">test</a>
+      <a class="navigationButton active" href="index.html">Home</a>
+      <a class="navigationButton" href="https://www.google.com/">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
 
-      <a href="#Login" style="float: right;">Login</a>
+      <a class="navigationButton" href="HTML/login.html" style="float: right;">Login</a>
     </section>
 
     <section class="content">
@@ -99,6 +99,8 @@
     window.onscroll = function () { myFunction(), scrollFunction() };
 
     var navbar = document.getElementById("navigationBar");
+    var navbutton = navbar.getElementsByClassName("navigationButton");
+
     var sticky = navbar.offsetTop;
 
     function myFunction() {
@@ -111,9 +113,13 @@
 
     function scrollFunction() {
       if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        navbar.style.padding = "0";
+        for (let index = 0; index < navbutton.length; index++) {
+          navbutton[index].style.padding = "7px 0";
+        }
       } else {
-        navbar.style.padding = "20px 0";
+        for (let index = 0; index < navbutton.length; index++) {
+          navbutton[index].style.padding = "20px 0";
+        }
       }
     }
   </script>

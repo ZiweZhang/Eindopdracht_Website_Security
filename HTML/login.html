@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Website</title>
+  <link href="../CSS/index.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="grid">
+    <header></header>
+
+    <section id="navigationBar">
+      <a class="navigationButton" href="../index.html">Home</a>
+      <a class="navigationButton" href="https://www.google.com/">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+      <a class="navigationButton" href="#test">test</a>
+
+      <a class="navigationButton active" href="login.html" style="float: right;">Login</a>
+    </section>
+
+    <section class="content">
+      <form action="#action" method="POST">
+        <div class="container">
+          <label><b>Emailadres</b></label>
+          <input type="text" placeholder="Emailadres" name="emailadres" required>
+
+          <label><b>Wachtwoord</b></label>
+          <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
+
+          <button type="submit">Inloggen</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Laat mij aangmeld blijven
+          </label>
+        </div>
+
+        <div class="container">
+          <button type="button"><a href="../index.html">Terug</a></button>
+          <span class="wachtwoord"><a href="#">Wachtwoord</a> vergeten?</span>
+        </div>
+      </form>
+
+      <div class="container">
+        <p>Geen account?</p>
+        <button type="button"><a href=registreren.html>klik hier om aan te melden</a></button>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div>footer</div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.onscroll = function () { myFunction(), scrollFunction() };
+
+    var navbar = document.getElementById("navigationBar");
+    var navbutton = navbar.getElementsByClassName("navigationButton");
+
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        for (let index = 0; index < navbutton.length; index++) {
+          navbutton[index].style.padding = "7px 0";
+        }
+      } else {
+        for (let index = 0; index < navbutton.length; index++) {
+          navbutton[index].style.padding = "20px 0";
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
