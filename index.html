@@ -4,26 +4,27 @@
 <head>
   <title>Website</title>
   <link href="CSS/index.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
   <div class="grid">
-    <div class="header"></div>
+    <header></header>
 
-    <div class="navigationBar">
-      <a class="navButton" href="#test">test</a>
-      <a class="navButton" href="#test">test</a>
-      <a class="navButton" href="#test">test</a>
-      <a class="navButton" href="#test">test</a>
-      <a class="navButton" href="#test">test</a>
-      <a class="navButton" href="#test">test</a>
-      <a class="navButton" href="#test">test</a>
+    <section id="navigationBar">
+      <a href="#footer">test</a>
+      <a href="#test">test</a>
+      <a href="#test">test</a>
+      <a href="#test">test</a>
+      <a href="#test">test</a>
+      <a href="#test">test</a>
+      <a href="#test">test</a>
 
-      <a class="navButton" href="#Login" style="float: right;">Login</a>
-    </div>
+      <a href="#Login" style="float: right;">Login</a>
+    </section>
 
-    <div class="body">
+    <section class="content">
       <h1>Bla Bla Bla</h1>
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
         sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
@@ -74,13 +75,37 @@
         dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
         Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>
 
-        <iframe src="https://www.youtube.com/embed/expCgeQXqzA" width="800px" height="650px"></iframe>
-    </div>
-    <div class="footer">
-      <p>footer</p>
-    </div>
+      <iframe src="https://www.youtube.com/embed/expCgeQXqzA" width="800px" height="650px"></iframe>
+    </section>
+
+    <footer id="footer">
+      <div>footer</div>
+    </footer>
 
   </div>
+
+  <script>
+    window.onscroll = function () { myFunction(), scrollFunction() };
+
+    var navbar = document.getElementById("navigationBar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        navbar.style.padding = "0";
+      } else {
+        navbar.style.padding = "20px 0";
+      }
+    }
+  </script>
 </body>
 
 </html>

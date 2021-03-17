@@ -1,7 +1,10 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Verdana;
-    margin: 0 auto;
-    width: 80%;
+    margin: 0;
 }
 
 /* ==================================================================================== */
@@ -14,23 +17,26 @@ body {
 
 /* ==================================================================================== */
 
-.header {
+header {
     background-color: rgb(255, 196, 0);
     height: 160px;
 }
 
 /* ==================================================================================== */
 
-.navigationBar {
+#navigationBar {
     background-color: rgb(0, 204, 255);
-    height: 40px;
+    
+    padding: 20px 0;
+
+    overflow: hidden;
+    transition: 0.4s;
 }
 
-.navButton {
+#navigationBar > a {
     background-color: rgb(0, 204, 255);
     float: left;
 
-    height: 100%;
     width: 6rem;
 
     text-decoration: none;
@@ -40,19 +46,28 @@ body {
     padding: 7px 0;
 }
 
-.navButton:hover{
+#navigationBar > a:hover{
     background-color: rgb(3, 183, 228);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 /* ==================================================================================== */
 
-.body {
+.content {
     background-color: rgb(102, 246, 145);
 }
 
 /* ==================================================================================== */
 
-.footer {
+footer {
     background-color: rgb(255, 6, 27);
     height: 40px;
+
+    display: flex;
+    align-items: center;
 }
