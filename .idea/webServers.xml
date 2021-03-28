@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="529c2f7c-190f-43ef-a7bb-02cca15bc84e" name="SecurityServer">
+        <fileTransfer rootFolder="/var/www/html/Eindopdracht_Website_Security" accessType="SFTP" host="145.24.222.229" port="22" sshConfigId="377d8e65-268f-4014-a533-cf59e42a4e18" sshConfig="ubuntu-0984223@145.24.222.229:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

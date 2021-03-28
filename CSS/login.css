@@ -1,0 +1,100 @@
+
+
+.content {
+    width: 40%;
+    box-shadow: 16px 16px 32px rgb(123, 123, 123);
+    background-color: rgb(223, 223, 223);
+
+    padding-bottom: 20px;
+    margin: 40px auto 100px;
+    text-align: center;
+}
+
+form {
+    padding-bottom: 70px;
+}
+
+label {
+    float: left;
+    width: 95%;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+input[type=text], input[type=password] {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button[type=submit] {
+    width: 95%;
+    padding: 9px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: rgb(113, 202, 229);
+
+    transition: 0.4s;
+    font-size: 20px;
+    color: white;
+}
+
+button[type=submit]:hover {
+    background-color: rgb(127, 227, 255);
+}
+
+#terug {
+    width: auto;
+    padding: 6px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: red;
+
+    float: left;
+    margin: 8px 0 8px 20px;
+
+    transition: 0.4s;
+}
+
+#terug:hover {
+    opacity: 60%;
+}
+
+#terugA {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+
+#wachtwoord {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    float: right;
+}
+
+.aanmelden {
+    width: 95%;
+    float: left;
+    text-align: left;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+}
+
