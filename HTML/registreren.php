@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <head>
     <title>Website</title>
     <link href="../CSS/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../CSS/login.css" rel="stylesheet" type="text/css"/>
+    <link href="../CSS/registreren.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--  Reload pagina automatich na verandering-->
@@ -30,32 +30,49 @@
         <a class="navigationButton" href="#test">test</a>
         <a class="navigationButton" href="#test">test</a>
 
-        <a class="navigationButton active" href="login.html" style="float: right;">Login</a>
+        <a class="navigationButton" href="login.html" style="float: right;">Login</a>
     </section>
 
-        <section class="content">
-            <form action="#action" method="POST">
+    <section class="content">
+        <form action="../PHP/registrerenController.php" method="POST">
+            <div class="container">
+                <label><b>Naam</b><br>
+                    <input class="naam" type="text" placeholder="Voornaam" name="voornaam" required>
+                    <input class="tussenvoegsel" type="text" name="tussenvoegsel">
+                    <input class="naam" type="text" placeholder="Achternaam" name="achternaam" required>
+                    <span class="error"><?php echo "test";?></span>
+                </label>
+
+                <label><b>Geboortedatum</b>
+                    <input id="datum" type="date" min="1900-01-01" max="today" name="geboortedatum" required>
+                </label>
+
+                <label><b>Geslacht</b>
+                    <select type="text" name="geslacht" required>
+                        <option value="" hidden disabled selected>Selecteer optie</option>
+                        <option value="Man">Man</option>
+                        <option value="Vrouw">Vrouw</option>
+                        <option value="Alien">Alien</option>
+                    </select>
+                </label>
+
                 <label><b>Emailadres</b>
-                <input type="text" placeholder="Emailadres" name="emailadres" required>
+                    <input type="email" placeholder="Emailadres" name="emailadres" required>
                 </label>
 
                 <label><b>Wachtwoord</b>
-                <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
+                    <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
                 </label>
 
-                <button type="submit">Inloggen</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Laat mij ingelogd blijven
+                <label><b>Herhaal wachtwoord</b>
+                    <input type="password" placeholder="Wachtwoord" name="wachtwoord_herhaal" required>
                 </label>
-            </form>
 
-
-            <div class="aanmelden">
-                <span id="wachtwoord"><a href="#">Wachtwoord</a> vergeten?</span>
-                <p>Geen account?</p>
-                <a href=registreren.php>klik hier om aan te melden</a>
+                <button type="submit">Aanmelden</button>
             </div>
-        </section>
+
+        </form>
+    </section>
 
     <footer id="footer">
         <p id="Copyright"></p>

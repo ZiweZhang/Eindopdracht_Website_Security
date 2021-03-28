@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e81ba7cf-c823-4a5f-9375-6b00ddf89f53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CSS/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CSS/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CSS/registreren.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/registrerenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SecurityVervolg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SecurityVervolg.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HTML/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/registreren.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/registreren.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/registreren.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/registreren.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +65,8 @@
       <workItem from="1616759297868" duration="94000" />
       <workItem from="1616760971223" duration="685000" />
       <workItem from="1616941950615" duration="889000" />
-      <workItem from="1616944206905" duration="2000" />
+      <workItem from="1616944206905" duration="62000" />
+      <workItem from="1616959531290" duration="11327000" />
     </task>
     <servers />
   </component>

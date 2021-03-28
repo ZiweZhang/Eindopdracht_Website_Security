@@ -1,0 +1,57 @@
+
+
+.content {
+    width: 40%;
+    box-shadow: 16px 16px 32px rgb(123, 123, 123);
+    background-color: rgb(223, 223, 223);
+
+    padding-bottom: 20px;
+    margin: 40px auto 100px;
+    text-align: center;
+}
+
+.tussenvoegsel{
+    width: 10%;
+}
+
+.naam {
+    width: 42%;
+}
+
+label {
+    float: left;
+    width: 95%;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+input, select{
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+
+button[type=submit] {
+    width: 95%;
+    padding: 9px 20px;
+    margin: 50px 0 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: rgb(113, 202, 229);
+
+    transition: 0.4s;
+    font-size: 20px;
+    color: white;
+}
+
+button[type=submit]:hover {
+    background-color: rgb(127, 227, 255);
+}
+
+
