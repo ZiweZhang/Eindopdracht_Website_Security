@@ -24,12 +24,10 @@ session_start();
 
     <section id="navigationBar">
         <a class="navigationButton" href="../index.php">Home</a>
-        <a class="navigationButton" href="https://www.google.com/">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
+        <a class="navigationButton" href="../index.php#Nieuws">Nieuws</a>
+        <a class="navigationButton" href="../index.php#HetVaccin">Het Vaccin</a>
+        <a class="navigationButton" href="../index.php#OverOns">Over Professional Pills</a>
+        <a class="navigationButton" href="../index.php#Contact">Contact</a>
 
         <a class="navigationButton active" href="login.php" style="float: right;">Login</a>
     </section>
@@ -61,7 +59,8 @@ session_start();
     </section>
 
     <footer id="footer">
-        <p id="Copyright"></p>
+        <p id="Copyright" style="float: left"></p>
+        <p style="float: right">Ziwe Zhang - 0984223</p>
     </footer>
 
 </div>

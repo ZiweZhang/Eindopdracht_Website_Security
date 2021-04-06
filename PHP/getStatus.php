@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //database informatie
 $host = "localhost";
 $dbUsername = "root";

@@ -170,7 +170,8 @@ session_start();
     </section>
 
     <footer id="footer">
-        <p id="Copyright"></p>
+        <p id="Copyright" style="float: left"></p>
+        <p style="float: right">Ziwe Zhang - 0984223</p>
     </footer>
 
 </div>

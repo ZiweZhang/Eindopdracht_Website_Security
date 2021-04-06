@@ -49,7 +49,7 @@ session_start();
                 <br>
                 <p>U staat op de <b><?php echo "$positieWachtrij"; ?>e </b>plek in de wachtrij.</p>
                 <p>Het ziekenhuis waar U staat ingeschreven is <b>'<?php echo "$ziekenhuis"; ?>'</b>
-                    in <b><?php echo "$ziekenhuisPlaats"; ?></b> te <b><?php echo "$ziekenhuisProvincie"; ?></b></p>
+                    in <b><?php echo "$ziekenhuisPlaats"; ?></b> - <b><?php echo "$ziekenhuisProvincie"; ?></b></p>
 
             <?php else : ?>
                 <br><br>
@@ -62,7 +62,8 @@ session_start();
     </section>
 
     <footer id="footer">
-        <p id="Copyright"></p>
+        <p id="Copyright" style="float: left"></p>
+        <p style="float: right">Ziwe Zhang - 0984223</p>
     </footer>
 
 </div>
