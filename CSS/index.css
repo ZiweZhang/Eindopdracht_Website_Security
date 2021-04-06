@@ -1,5 +1,25 @@
 .content {
-    width: 80%;
+    width: 55%;
     margin: 0 auto 100px;
     text-align: center;
+}
+
+p {
+    text-align: left;
+}
+
+.inhoud {
+    width: 100%;
+    box-shadow: 16px 16px 32px rgb(123, 123, 123);
+    background-color: rgb(223, 223, 223);
+
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin: 40px auto 100px;
+    text-align: center;
+}
+
+.inhoud > h1 {
+    padding-top: 20px;
+    text-decoration: underline overline;
 }

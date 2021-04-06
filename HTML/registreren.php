@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +26,7 @@
     </header>
 
     <section id="navigationBar">
-        <a class="navigationButton" href="../index.html">Home</a>
+        <a class="navigationButton" href="../index.php">Home</a>
         <a class="navigationButton" href="https://www.google.com/">test</a>
         <a class="navigationButton" href="#test">test</a>
         <a class="navigationButton" href="#test">test</a>
@@ -30,43 +34,77 @@
         <a class="navigationButton" href="#test">test</a>
         <a class="navigationButton" href="#test">test</a>
 
-        <a class="navigationButton" href="login.html" style="float: right;">Login</a>
+        <a class="navigationButton" href="login.php" style="float: right;">Login</a>
     </section>
 
     <section class="content">
-        <form action="../PHP/registrerenController.php" method="POST">
+        <form method="POST" action="../PHP/registrerenController.php">
             <div class="container">
                 <label><b>Naam</b><br>
-                    <input class="naam" type="text" placeholder="Voornaam" name="voornaam" required>
-                    <input class="tussenvoegsel" type="text" name="tussenvoegsel">
-                    <input class="naam" type="text" placeholder="Achternaam" name="achternaam" required>
-                    <span class="error"><?php echo "test";?></span>
+                    <input class="naam" type="text" placeholder="Voornaam" name="voornaam"
+                           value="<?php echo isset($_GET["voornaam"]) ? $_GET["voornaam"] : ''; ?>" >
+                    <input class="tussenvoegsel" type="text" name="tussenvoegsel"
+                           value="<?php echo isset($_GET["tussenvoegsel"]) ? $_GET["tussenvoegsel"] : ''; ?>">
+                    <input class="naam" type="text" placeholder="Achternaam" name="achternaam"
+                           value="<?php echo isset($_GET["achternaam"]) ? $_GET["achternaam"] : ''; ?>" >
                 </label>
+                <span class="error errorNaam1"><?php echo $_SESSION["voorNaamErr"]; ?></span>
+                <span class="error errorNaam2"><?php echo $_SESSION["achterNaamErr"]; ?></span>
 
                 <label><b>Geboortedatum</b>
-                    <input id="datum" type="date" min="1900-01-01" max="today" name="geboortedatum" required>
+                    <input id="datum" type="date" min="1900-01-01" max="today" name="geboortedatum"
+                           value="<?php echo isset($_GET["geboortedatum"]) ? $_GET["geboortedatum"] : ''; ?>" >
                 </label>
+                <span class="error"><?php echo $_SESSION["geboortedatumErr"]; ?></span>
 
                 <label><b>Geslacht</b>
-                    <select type="text" name="geslacht" required>
-                        <option value="" hidden disabled selected>Selecteer optie</option>
-                        <option value="Man">Man</option>
-                        <option value="Vrouw">Vrouw</option>
-                        <option value="Alien">Alien</option>
+                    <select type="text" name="geslacht" >
+                        <option value=""
+                                hidden <?php echo ($_GET['geslacht'] == '') ? ' selected="selected"' : ''; ?>>
+                            Selecteer optie
+                        </option>
+                        <option value="Man" <?php echo ($_GET['geslacht'] == 'Man') ? ' selected="selected"' : ''; ?>>
+                            Man
+                        </option>
+                        <option value="Vrouw"<?php echo ($_GET['geslacht'] == 'Vrouw') ? ' selected="selected"' : ''; ?>>
+                            Vrouw
+                        </option>
+                        <option value="Alien"<?php echo ($_GET['geslacht'] == 'Alien') ? ' selected="selected"' : ''; ?>>
+                            Alien
+                        </option>
                     </select>
                 </label>
+                <span class="error"><?php echo $_SESSION["geslachtErr"]; ?></span>
 
                 <label><b>Emailadres</b>
-                    <input type="email" placeholder="Emailadres" name="emailadres" required>
+                    <input type="email" placeholder="Emailadres" name="emailadres"
+                           value="<?php echo $_GET["emailadres"]; ?>" >
+                </label>
+                <span class="error"><?php echo $_SESSION["emailErr"]; ?></span>
+
+                <label><b>adres</b><br>
+                    <input type="text" placeholder="Straatnaam" name="straatnaam"
+                           value="<?php echo $_GET["straatnaam"]; ?>" >
+                    <span class="error errorAdres"><?php echo $_SESSION["straatnaamErr"]; ?></span>
+                    <input class="adres" type="text" placeholder="Huisnummer" name="huisnummer"
+                           value="<?php echo $_GET["huisnummer"]; ?>" >
+                    <input class="adres" type="text" placeholder="Toevoeging" name="huisnummerToevoeging"
+                           value="<?php echo $_GET["huisnummerToevoeging"]; ?>">
+                    <span class="error errorAdres"><?php echo $_SESSION["huisnummerErr"]; ?></span>
+                    <input type="text" placeholder="Woonplaats" name="woonplaats"
+                           value="<?php echo $_GET["woonplaats"]; ?>" >
+                    <span class="error errorAdres"><?php echo $_SESSION["woonplaatsErr"]; ?></span>
                 </label>
 
                 <label><b>Wachtwoord</b>
-                    <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
+                    <input type="password" placeholder="Wachtwoord" name="wachtwoord">
                 </label>
+                <span class="error" ><?php echo $_SESSION["wachtwoordErr"]; ?></span>
 
                 <label><b>Herhaal wachtwoord</b>
-                    <input type="password" placeholder="Wachtwoord" name="wachtwoord_herhaal" required>
+                    <input type="password" placeholder="Wachtwoord" name="wachtwoord_herhaal">
                 </label>
+                <span class="error" ><?php echo $_SESSION["wachtwoordErr2"]; ?></span>
 
                 <button type="submit">Aanmelden</button>
             </div>

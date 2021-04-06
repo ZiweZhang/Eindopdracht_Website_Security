@@ -1,10 +1,14 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <head>
     <title>Website</title>
-    <link href="../CSS/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../CSS/login.css" rel="stylesheet" type="text/css"/>
+    <link href="CSS/base.css" rel="stylesheet" type="text/css"/>
+    <link href="CSS/index.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--  Reload pagina automatich na verandering-->
@@ -22,7 +26,7 @@
     </header>
 
     <section id="navigationBar">
-        <a class="navigationButton" href="../index.html">Home</a>
+        <a class="navigationButton active" href="index.php">Home</a>
         <a class="navigationButton" href="https://www.google.com/">test</a>
         <a class="navigationButton" href="#test">test</a>
         <a class="navigationButton" href="#test">test</a>
@@ -30,32 +34,40 @@
         <a class="navigationButton" href="#test">test</a>
         <a class="navigationButton" href="#test">test</a>
 
-        <a class="navigationButton active" href="login.html" style="float: right;">Login</a>
+        <?php
+        if ($_SESSION["login"] == true){
+
+        } else {
+
+        }
+        ?>
+        <a class="navigationButton" href="HTML/login.php" style="float: right;">Login</a>
     </section>
 
-        <section class="content">
-            <form action="#action" method="POST">
-                <label><b>Emailadres</b>
-                <input type="text" placeholder="Emailadres" name="emailadres" required>
-                </label>
+    <section class="content">
 
-                <label><b>Wachtwoord</b>
-                <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
-                </label>
+        <div class="inhoud">
+            <h1>Over ons</h1>
+            <p>Professional Pills is een jong en dynamisch bedrijf die een flinke groei heeft doorgemaakt over het
+                afgelopen
+                jaar en wil dit jaar uitbreiden. Wij willen ons specialiseren in de vaccinmarkt en hebben een
+                alternatief
+                vaccin ontwikkeld tegen een veelvoorkomende virale infectie. Om dit vaccin te laten goedkeuren, moet het
+                eerst op vrijwillige proefpersonen getest worden op veiligheid en effectiviteit.</p>
 
-                <button type="submit">Inloggen</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Laat mij ingelogd blijven
-                </label>
-            </form>
+            <p>Jij bent onmisbaar bij de ontwikkeling van nieuwe en betere medicijnen. Samen met PP kan je de kwaliteit
+                van
+                leven van veel mensen verbeteren. Een belangrijke bijdrage leveren aan de maatschappij? Word deelnemer
+                aan
+                geneesmiddelenonderzoek bij Professional Pills Health Sciences!</p>
+        </div>
 
-
-            <div class="aanmelden">
-                <span id="wachtwoord"><a href="#">Wachtwoord</a> vergeten?</span>
-                <p>Geen account?</p>
-                <a href=registreren.php>klik hier om aan te melden</a>
-            </div>
-        </section>
+        <iframe src="https://www.youtube.com/embed/p47zwuOVXNQ?start=296&end=395&autoplay=1" width="800px"
+                height="650px"></iframe>
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGnVFcmykr11A/profile-displayphoto-shrink_200_200/0/1616704740974?e=1622073600&v=beta&t=OqzfEREaAsiU1UBkCWXXH8O5kKPO-7N0K3u6ijUladA"
+             width="800px" height="650px" alt="">
+        <img src="/Images/Deniz.png" width="800px" height="650px" alt="">
+    </section>
 
     <footer id="footer">
         <p id="Copyright"></p>

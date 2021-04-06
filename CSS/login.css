@@ -32,9 +32,10 @@ input[type=text], input[type=password] {
 }
 
 button[type=submit] {
-    width: 95%;
+    float: left;
+    width: 90%;
     padding: 9px 20px;
-    margin: 8px 0;
+    margin: 8px 0 8px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -96,5 +97,15 @@ a {
 
 a:hover {
     color: blue;
+}
+
+.error{
+    float: left;
+    margin-left: 20px;
+    width: 90%;
+    color: red;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid rgb(223, 223, 223);
 }
 

@@ -10,14 +10,6 @@
     text-align: center;
 }
 
-.tussenvoegsel{
-    width: 10%;
-}
-
-.naam {
-    width: 42%;
-}
-
 label {
     float: left;
     width: 95%;
@@ -36,10 +28,23 @@ input, select{
 
 }
 
+.tussenvoegsel{
+    width: 10%;
+}
+
+.naam {
+    width: 42%;
+}
+
+.adres{
+    width: 47%;
+}
+
 button[type=submit] {
-    width: 95%;
+    float: left;
+    width: 90%;
     padding: 9px 20px;
-    margin: 50px 0 8px;
+    margin: 50px 0 8px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -52,6 +57,35 @@ button[type=submit] {
 
 button[type=submit]:hover {
     background-color: rgb(127, 227, 255);
+}
+
+.error{
+    float: left;
+    margin-left: 20px;
+    width: 90%;
+    color: red;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid rgb(223, 223, 223);
+}
+.errorNaam1{
+    width: 40%;
+}
+
+.errorNaam2{
+    width: 40%;
+    margin-left: 80px;
+}
+
+.errorAdres{
+    margin-left: 0;
+    width: 95%;
+}
+
+.errorAdresHuisnummer{
+    margin-left: 2px;
+    width: 47%;
+
 }
 
 

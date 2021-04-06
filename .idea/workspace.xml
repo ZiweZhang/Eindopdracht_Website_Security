@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e81ba7cf-c823-4a5f-9375-6b00ddf89f53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CSS/registreren.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PHP/registrerenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SecurityVervolg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SecurityVervolg.iml" afterDir="false" />
+    <list default="true" id="e81ba7cf-c823-4a5f-9375-6b00ddf89f53" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/PHP/loginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/registreren.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/registreren.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/registreren.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/registreren.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/registreren.php" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/registreren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PHP/registrerenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/registrerenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +31,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1ptkzyowya436uHh8I8qHKwj3SX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,10 +53,16 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.well-known/pki-validation" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\School\Security\Secutity vervolg\SecurityVervolg\.well-known\pki-validation" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,8 +83,27 @@
       <workItem from="1616760971223" duration="685000" />
       <workItem from="1616941950615" duration="889000" />
       <workItem from="1616944206905" duration="62000" />
-      <workItem from="1616959531290" duration="11327000" />
+      <workItem from="1616959531290" duration="11391000" />
+      <workItem from="1617019509156" duration="15028000" />
+      <workItem from="1617297182903" duration="631000" />
+      <workItem from="1617316067724" duration="1051000" />
+      <workItem from="1617362807763" duration="718000" />
+      <workItem from="1617364003569" duration="2814000" />
+      <workItem from="1617567124019" duration="1601000" />
+      <workItem from="1617635773874" duration="655000" />
+      <workItem from="1617663987981" duration="2390000" />
+      <workItem from="1617712985222" duration="291000" />
+      <workItem from="1617713286718" duration="37000" />
+      <workItem from="1617713343790" duration="386000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1616972182898</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616972182898</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,5 +120,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
