@@ -48,7 +48,8 @@ if (mysqli_connect_error()) {
         if (mysqli_num_rows($resultGetGebruiker) == 1) {
             if(password_verify($wachtwoord, $hased_wachtwoord)){
                 $_SESSION["login"] = true;
-                $locatie = "Location: ../index.html";
+                $_SESSION["emailadres"] = $emailadres;
+                $locatie = "Location: ../index.php";
             }else{
                 $_SESSION["wachtwoordErr"] = "Wachtwoord is niet correct!";
             }

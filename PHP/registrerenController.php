@@ -10,6 +10,8 @@ $dbName = "ProfessionalPills";
 // Creeert connectie met database
 $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
 
+
+// Account aanmaken
 $voornaam = ucfirst(mysqli_real_escape_string($conn, $_POST["voornaam"]));
 $tussenvoegsel = strtolower(mysqli_real_escape_string($conn, $_POST["tussenvoegsel"]));
 $achternaam = ucfirst(mysqli_real_escape_string($conn, $_POST["achternaam"]));
@@ -20,9 +22,10 @@ $straatnaam = ucfirst(mysqli_real_escape_string($conn, $_POST["straatnaam"]));
 $huisnummer = mysqli_real_escape_string($conn, $_POST["huisnummer"]);
 $huisnummerToevoeging = strtoupper(mysqli_real_escape_string($conn, $_POST["huisnummerToevoeging"]));
 $woonplaats = ucfirst(mysqli_real_escape_string($conn, $_POST["woonplaats"]));
+$provincie = mysqli_real_escape_string($conn, $_POST["provincie"]);
 $wachtwoord = password_hash(mysqli_real_escape_string($conn, $_POST["wachtwoord"]), PASSWORD_BCRYPT);
 
-$locatie = "Location: ../HTML/registreren.php?voornaam=" . $voornaam . "&tussenvoegsel=" . $tussenvoegsel . "&achternaam=" . $achternaam . "&geboortedatum=" . $geboortedatum . "&geslacht=" . $geslacht . "&emailadres=" . $emailadres . "&straatnaam=" . $straatnaam . "&huisnummer=" . $huisnummer . "&huisnummerToevoeging=" . $huisnummerToevoeging . "&woonplaats=" . $woonplaats;
+$locatie = "Location: ../HTML/registreren.php?voornaam=" . $voornaam . "&tussenvoegsel=" . $tussenvoegsel . "&achternaam=" . $achternaam . "&geboortedatum=" . $geboortedatum . "&geslacht=" . $geslacht . "&emailadres=" . $emailadres . "&straatnaam=" . $straatnaam . "&huisnummer=" . $huisnummer . "&huisnummerToevoeging=" . $huisnummerToevoeging . "&woonplaats=" . $woonplaats . "&provincie=" . $provincie;
 
 $error = 0;
 
@@ -64,7 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION["woonplaatsErr"] = "*vul je woonplaats in";
         $error++;
     } else $_SESSION["woonplaatsErr"] = "";
-
+    if ($provincie == '') {
+        $_SESSION["provincieErr"] = "*vul je provincie in";
+        $error++;
+    } else $_SESSION["provincieErr"] = "";
     if ($_POST["wachtwoord"] == '') {
         $_SESSION["wachtwoordErr"] = "*vul een wachtwoord in";
         $_SESSION["wachtwoordErr2"] = "";
@@ -83,29 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-//echo $voornaam;
-//echo "<br>";
-//echo $tussenvoegsel;
-//echo "<br>";
-//echo $achternaam;
-//echo "<br>";
-//echo $geboortedatum;
-//echo "<br>";
-//echo $geslacht;
-//echo "<br>";
-//echo $emailadres;
-//echo "<br>";
-//echo $straatnaam;
-//echo "<br>";
-//echo $huisnummer;
-//echo "<br>";
-//echo $huisnummerToevoeging;
-//echo "<br>";
-//echo $woonplaats;
-//echo "<br>";
-//echo $wachtwoord;
-//echo "<br>";
-
 // Check connection
 if (mysqli_connect_error()) {
     die('Connect Error(' . mysqli_connect_errno() . ')' . mysqli_connect_error());
@@ -114,21 +97,47 @@ if (mysqli_connect_error()) {
     echo "connectie goed";
 
     // alle queries
-    $sql = "INSERT INTO gebruikers (emailadres, voornaam,tussenvoegsel, achternaam, geboortedatum, geslacht,woonplaats, straatnaam, huisnummer, huisnummerToevoeging, wachtwoord) VALUES ('$emailadres', '$voornaam', NULLIF('$tussenvoegsel', ''), '$achternaam', '$geboortedatum', '$geslacht', '$woonplaats', '$straatnaam', '$huisnummer', NULLIF('$huisnummerToevoeging', ''), '$wachtwoord');";
+    $registrerenQuery = "INSERT INTO gebruikers (emailadres, voornaam,tussenvoegsel, achternaam, geboortedatum, geslacht, provincie, woonplaats, straatnaam, huisnummer, huisnummerToevoeging, wachtwoord) VALUES ('$emailadres', '$voornaam', NULLIF('$tussenvoegsel', ''), '$achternaam', '$geboortedatum', '$geslacht', '$provincie', '$woonplaats', '$straatnaam', '$huisnummer', NULLIF('$huisnummerToevoeging', ''), '$wachtwoord');";
 
 
     $bestaatGebruiker = "SELECT * FROM gebruikers WHERE emailadres='$emailadres'";
-
     // queries uitvoeren
     if ($error == 0) {
         if (mysqli_num_rows(mysqli_query($conn, $bestaatGebruiker)) == 0) {
-            $result = mysqli_query($conn, $sql);
-            $locatie = "Location: ../index.html";
+            $registreren = mysqli_query($conn, $registrerenQuery);
+            echo "gebruiker aangemaakt";
+            $locatie = "../index.php";
+
+            // status bepalen
+            // kiest ziekenhuis in zelfde profincie en bepaald de positie in de wachtrij aan de hand van aantal plekken in ziekenhuis
+            $ziekenhuis = NULL;
+            $getZiekenhuisQuery = "SELECT * FROM ziekenhuizen WHERE provincie = '$provincie'";
+            $getZiekenhuis = mysqli_query($conn, $getZiekenhuisQuery);
+            while ($row = mysqli_fetch_assoc($getZiekenhuis)) {
+                if ($row["provincie"] == $provincie) {
+                    $ziekenhuis = $row["ziekenhuis"];
+                    $plaatsZiekenhuis = $row["plaats"];
+                    $provincieZiekenhuis = $row["provincie"];
+
+                    $inschrijvingenZiekenhuis = $row["inschrijvingen"]; // kijkt hoeveel inschrijvingen er zijn bij de gekozen ziekenhuis
+                    $positie = $inschrijvingenZiekenhuis + 1; // plaats in de wachtrij is het aantal inschrijvingen + 1
+
+                    $updateStatusQuery = "INSERT INTO `status` (`emailadres`, `ziekenhuis`, `plaats`, `provincie`, `wachtrijPositie`) VALUES ('$emailadres', '$ziekenhuis', '$plaatsZiekenhuis', '$provincieZiekenhuis', '$positie');";
+                    $updateZiekenhuisQuery = "UPDATE `ziekenhuizen` SET `inschrijvingen` = '$positie' WHERE `ziekenhuizen`.`plaats` = '$plaatsZiekenhuis' AND `ziekenhuizen`.`provincie` = '$provincieZiekenhuis'";
+                    $updateStatus = mysqli_query($conn, $updateStatusQuery);
+                    $updateZiekenhuis = mysqli_query($conn, $updateZiekenhuisQuery);
+
+                    echo '<script type="text/javascript">';
+                    echo 'alert("Uw account is succesvol aangemaakt.");';
+                    echo 'window.location.href = "' . $locatie . '";';
+                    echo '</script>';
+                    break;
+                }
+            }
         } else {
             $_SESSION["emailErr"] = "emailadres is al in gebruik";
         }
     }
-
 
     header($locatie);
 

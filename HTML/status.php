@@ -3,12 +3,12 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <head>
     <title>Website</title>
     <link href="../CSS/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../CSS/login.css" rel="stylesheet" type="text/css"/>
+    <link href="../CSS/index.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -24,40 +24,41 @@ session_start();
 
     <section id="navigationBar">
         <a class="navigationButton" href="../index.php">Home</a>
-        <a class="navigationButton" href="https://www.google.com/">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
-        <a class="navigationButton" href="#test">test</a>
+        <a class="navigationButton" href="../index.php#Nieuws">Nieuws</a>
+        <a class="navigationButton" href="../index.php#HetVaccin">Het Vaccin</a>
+        <a class="navigationButton" href="../index.php#OverOns">Over Professional Pills</a>
+        <a class="navigationButton" href="../index.php#Contact">Contact</a>
 
-        <a class="navigationButton active" href="login.php" style="float: right;">Login</a>
+        <?php if ($_SESSION["login"] == true) : ?>
+            <a class="navigationButton" href="../PHP/uitloggen.php" style="float: right;">Uitloggen</a>
+            <a class="navigationButton active" href="status.php" style="float: right;">Status</a>
+        <?php else : ?>
+            <a class="navigationButton" href="login.php" style="float: right;">Inloggen</a>
+        <?php endif; ?>
+
     </section>
 
+
     <section class="content">
-        <form action="../PHP/loginController.php" method="POST">
-            <label><b>Emailadres</b>
-                <input type="text" placeholder="Emailadres" name="emailadres" value="<?php echo $_GET["emailadres"]; ?>" >
-            </label>
-            <span class="error"><?php echo $_SESSION["emailErr"]; ?></span>
+        <div class="inhoud">
+            <h1>Status</h1>
+            <?php if ($_SESSION["login"] == true) : ?>
+                <?php include "../PHP/getStatus.php"; ?>
 
-            <label><b>Wachtwoord</b>
-                <input type="password" placeholder="Wachtwoord" name="wachtwoord" >
-            </label>
-            <span class="error"><?php echo $_SESSION["wachtwoordErr"]; ?></span>
+                <p>Goedendag <?php echo "$naam"; ?>, </p>
+                <br>
+                <p>U staat op de <b><?php echo "$positieWachtrij"; ?>e </b>plek in de wachtrij.</p>
+                <p>Het ziekenhuis waar U staat ingeschreven is <b>'<?php echo "$ziekenhuis"; ?>'</b>
+                    in <b><?php echo "$ziekenhuisPlaats"; ?></b> te <b><?php echo "$ziekenhuisProvincie"; ?></b></p>
 
-            <button type="submit">Inloggen</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Laat mij ingelogd blijven
-            </label>
-        </form>
-
-
-        <div class="aanmelden">
-            <span id="wachtwoord"><a href="#">Wachtwoord</a> vergeten?</span>
-            <p>Geen account?</p>
-            <a href=registreren.php>klik hier om aan te melden</a>
+            <?php else : ?>
+                <br><br>
+                <h2>Uw moet ingelogd zijn om dit te kunnen zien.</h2>
+                <h4>Klik <a href="login.php">hier</a> om in te loggen.</h4>
+                <br><br>
+            <?php endif; ?>
         </div>
+
     </section>
 
     <footer id="footer">

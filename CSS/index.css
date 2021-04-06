@@ -23,3 +23,8 @@ p {
     padding-top: 20px;
     text-decoration: underline overline;
 }
+
+.inhoud > p {
+    margin-left: 40px;
+    margin-right: 40px;
+}

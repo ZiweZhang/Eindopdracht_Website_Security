@@ -11,6 +11,10 @@ body {
     position: relative;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 /* ==================================================================================== */
 
 .grid {
@@ -45,12 +49,12 @@ header>div {
 #navigationBar>a {
     background-color: rgb(90, 157, 178);
     float: left;
-    width: 6rem;
+    width: auto;
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 20px;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px 20px;
 
     overflow: hidden;
     transition: 0.4s;

@@ -10,9 +10,6 @@ session_start();
     <link href="../CSS/base.css" rel="stylesheet" type="text/css"/>
     <link href="../CSS/registreren.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--  Reload pagina automatich na verandering-->
-    <script type="text/javascript" src="https://livejs.com/live.js"></script>
 </head>
 
 <body>
@@ -61,7 +58,7 @@ session_start();
                     <select type="text" name="geslacht" >
                         <option value=""
                                 hidden <?php echo ($_GET['geslacht'] == '') ? ' selected="selected"' : ''; ?>>
-                            Selecteer optie
+                            Selecteer geslacht
                         </option>
                         <option value="Man" <?php echo ($_GET['geslacht'] == 'Man') ? ' selected="selected"' : ''; ?>>
                             Man
@@ -94,7 +91,51 @@ session_start();
                     <input type="text" placeholder="Woonplaats" name="woonplaats"
                            value="<?php echo $_GET["woonplaats"]; ?>" >
                     <span class="error errorAdres"><?php echo $_SESSION["woonplaatsErr"]; ?></span>
+
+                    <select type="text" name="provincie" >
+                        <option value=""
+                                hidden <?php echo ($_GET['provincie'] == '') ? ' selected="selected"' : ''; ?>>
+                            Selecteer provincie
+                        </option>
+                        <option value="Drenthe" <?php echo ($_GET['provincie'] == 'Drenthe') ? ' selected="selected"' : ''; ?>>
+                            Drenthe
+                        </option>
+                        <option value="Flevoland"<?php echo ($_GET['provincie'] == 'Flevoland') ? ' selected="selected"' : ''; ?>>
+                            Flevoland
+                        </option>
+                        <option value="Friesland"<?php echo ($_GET['provincie'] == 'Friesland') ? ' selected="selected"' : ''; ?>>
+                            Friesland
+                        </option>
+                        <option value="Gelderland"<?php echo ($_GET['provincie'] == 'Gelderland') ? ' selected="selected"' : ''; ?>>
+                            Gelderland
+                        </option>
+                        <option value="Groningen"<?php echo ($_GET['provincie'] == 'Groningen') ? ' selected="selected"' : ''; ?>>
+                            Groningen
+                        </option>
+                        <option value="Limburg"<?php echo ($_GET['provincie'] == 'Limburg') ? ' selected="selected"' : ''; ?>>
+                            Limburg
+                        </option>
+                        <option value="Noord-Brabant"<?php echo ($_GET['provincie'] == 'Noord-Brabant') ? ' selected="selected"' : ''; ?>>
+                            Noord-Brabant
+                        </option>
+                        <option value="Noord-Holland"<?php echo ($_GET['provincie'] == 'Noord-Holland') ? ' selected="selected"' : ''; ?>>
+                            Noord-Holland
+                        </option>
+                        <option value="Overijssel"<?php echo ($_GET['provincie'] == 'Overijssel') ? ' selected="selected"' : ''; ?>>
+                            Overijssel
+                        </option>
+                        <option value="Utrecht"<?php echo ($_GET['provincie'] == 'Utrecht') ? ' selected="selected"' : ''; ?>>
+                            Utrecht
+                        </option>
+                        <option value="Zeeland"<?php echo ($_GET['provincie'] == 'Zeeland') ? ' selected="selected"' : ''; ?>>
+                            Zeeland
+                        </option>
+                        <option value="Zuid-Holland"<?php echo ($_GET['provincie'] == 'Zuid-Holland') ? ' selected="selected"' : ''; ?>>
+                            Zuid-Holland
+                        </option>
+                    </select>
                 </label>
+                <span class="error"><?php echo $_SESSION["provincieErr"]; ?></span>
 
                 <label><b>Wachtwoord</b>
                     <input type="password" placeholder="Wachtwoord" name="wachtwoord">
@@ -158,11 +199,11 @@ session_start();
     function scrollFunction() {
         if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
             for (let index = 0; index < navbutton.length; index++) {
-                navbutton[index].style.padding = "7px 0";
+                navbutton[index].style.padding = "7px 20px";
             }
         } else {
             for (let index = 0; index < navbutton.length; index++) {
-                navbutton[index].style.padding = "20px 0";
+                navbutton[index].style.padding = "20px 20px";
             }
         }
     }

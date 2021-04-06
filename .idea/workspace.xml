@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e81ba7cf-c823-4a5f-9375-6b00ddf89f53" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/PHP/loginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HTML/status.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/getStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PHP/uitloggen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SecurityVervolg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SecurityVervolg.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/registreren.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/registreren.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HTML/registreren.php" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/registreren.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PHP/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/loginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PHP/registrerenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/registrerenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +98,7 @@
       <workItem from="1617663987981" duration="2390000" />
       <workItem from="1617712985222" duration="291000" />
       <workItem from="1617713286718" duration="37000" />
-      <workItem from="1617713343790" duration="386000" />
+      <workItem from="1617713343790" duration="24328000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1616972182898</created>
