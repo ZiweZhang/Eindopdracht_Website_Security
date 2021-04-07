@@ -96,52 +96,51 @@ if (mysqli_connect_error()) {
 //connectie goed
     echo "connectie goed";
 
-    // alle queries
-    $registrerenQuery = "INSERT INTO gebruikers (emailadres, voornaam,tussenvoegsel, achternaam, geboortedatum, geslacht, provincie, woonplaats, straatnaam, huisnummer, huisnummerToevoeging, wachtwoord) VALUES ('$emailadres', '$voornaam', NULLIF('$tussenvoegsel', ''), '$achternaam', '$geboortedatum', '$geslacht', '$provincie', '$woonplaats', '$straatnaam', '$huisnummer', NULLIF('$huisnummerToevoeging', ''), '$wachtwoord');";
+    $bestaatGebruiker = "SELECT * FROM gebruikers WHERE emailadres=?";
+    $getGebruiker = $conn -> prepare($bestaatGebruiker);
+    $getGebruiker -> bind_param('s', $emailadres);
+    $getGebruiker -> execute();
+    $row = $getGebruiker -> get_result();
 
-
-    $bestaatGebruiker = "SELECT * FROM gebruikers WHERE emailadres='$emailadres'";
     // queries uitvoeren
     if ($error == 0) {
-        if (mysqli_num_rows(mysqli_query($conn, $bestaatGebruiker)) == 0) {
-            $registreren = mysqli_query($conn, $registrerenQuery);
+        if ($row -> num_rows == 0) {
+            // gebruiker toevoegen aan database
+            $registrerenQuery = "INSERT INTO gebruikers (emailadres, voornaam,tussenvoegsel, achternaam, geboortedatum, geslacht, provincie, woonplaats, straatnaam, huisnummer, huisnummerToevoeging, wachtwoord) VALUES (?, ?, NULLIF(?, ''), ?, ?, ?, ?, ?, ?, ?, NULLIF(?, ''), ?);";
+            $registreren = $conn -> prepare($registrerenQuery);
+            $registreren -> bind_param('ssssssssssss', $emailadres, $voornaam, $tussenvoegsel, $achternaam, $geboortedatum, $geslacht, $provincie, $woonplaats, $straatnaam, $huisnummer, $huisnummerToevoeging, $wachtwoord);
+            $registreren -> execute();
+
             echo "gebruiker aangemaakt";
-            $locatie = "../index.php";
+            $locatie = "../HTML/verify.php";
 
-            // status bepalen
-            // kiest ziekenhuis in zelfde profincie en bepaald de positie in de wachtrij aan de hand van aantal plekken in ziekenhuis
-            $ziekenhuis = NULL;
-            $getZiekenhuisQuery = "SELECT * FROM ziekenhuizen WHERE provincie = '$provincie'";
-            $getZiekenhuis = mysqli_query($conn, $getZiekenhuisQuery);
-            while ($row = mysqli_fetch_assoc($getZiekenhuis)) {
-                if ($row["provincie"] == $provincie) {
-                    $ziekenhuis = $row["ziekenhuis"];
-                    $plaatsZiekenhuis = $row["plaats"];
-                    $provincieZiekenhuis = $row["provincie"];
+            // verificatie token genereren en opslaan in database
+            $token = bin2hex(openssl_random_pseudo_bytes(5));
 
-                    $inschrijvingenZiekenhuis = $row["inschrijvingen"]; // kijkt hoeveel inschrijvingen er zijn bij de gekozen ziekenhuis
-                    $positie = $inschrijvingenZiekenhuis + 1; // plaats in de wachtrij is het aantal inschrijvingen + 1
+            // stuurt een mail met de verificatie code, dit werkt helaas nog niet
+            //$to = "'$emailadres";
+            //$subject = "Verificatie code Professional Pills";
+            //$txt = "Beste " . $voornaam . ", <br> Uw verificatie code is: " . $token;
+            //mail($to,$subject,$txt);
 
-                    $updateStatusQuery = "INSERT INTO `status` (`emailadres`, `ziekenhuis`, `plaats`, `provincie`, `wachtrijPositie`) VALUES ('$emailadres', '$ziekenhuis', '$plaatsZiekenhuis', '$provincieZiekenhuis', '$positie');";
-                    $updateZiekenhuisQuery = "UPDATE `ziekenhuizen` SET `inschrijvingen` = '$positie' WHERE `ziekenhuizen`.`plaats` = '$plaatsZiekenhuis' AND `ziekenhuizen`.`provincie` = '$provincieZiekenhuis'";
-                    $updateStatus = mysqli_query($conn, $updateStatusQuery);
-                    $updateZiekenhuis = mysqli_query($conn, $updateZiekenhuisQuery);
+            // slaat verificatie code op in database, dit wou ik ook hashen maar omdat het mailen niet werkt laat ik het zo. Zodat ik toch de code kan achterhalen
+            $verificatieQuery = "INSERT INTO `verificatie` (`emailadres`, `token`, `verified`) VALUES (?, ?, 'false');";
+            $verificatieUitvoeren = $conn -> prepare($verificatieQuery);
+            $verificatieUitvoeren -> bind_param('ss', $emailadres, $token);
+            $verificatieUitvoeren -> execute();
 
-                    echo '<script type="text/javascript">';
-                    echo 'alert("Uw account is succesvol aangemaakt.");';
-                    echo 'window.location.href = "' . $locatie . '";';
-                    echo '</script>';
-                    break;
-                }
-            }
+
+            session_destroy();
+            echo '<script type="text/javascript">';
+            echo 'alert("Uw account is succesvol aangemaakt. U moet uw emailadres eerst bevestigen voordat u op de wachtlijst wordt gezet.");';
+            echo 'window.location.href = "' . $locatie . '";';
+            echo '</script>';
         } else {
             $_SESSION["emailErr"] = "emailadres is al in gebruik";
         }
     }
 
     header($locatie);
-
-
 }
 
 

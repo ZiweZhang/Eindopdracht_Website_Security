@@ -35,20 +35,21 @@ if (mysqli_connect_error()) {
     //connectie goed
     echo "connectie goed";
 
-    // alle queries
-    $getGebruiker = "SELECT wachtwoord FROM gebruikers WHERE emailadres = '$emailadres'";
-
-    // queries uitvoeren
-    $resultGetGebruiker = mysqli_query($conn, $getGebruiker);
+    // Haalt gehashed wachtwoord uit database
+    $getGebruikerQuery = "SELECT * FROM gebruikers INNER JOIN verificatie ON gebruikers.emailadres = verificatie.emailadres WHERE gebruikers.emailadres = ?";
+    $getGebruiker = $conn -> prepare($getGebruikerQuery);
+    $getGebruiker -> bind_param('s', $emailadres);
+    $getGebruiker -> execute();
+    $row = $getGebruiker -> get_result() ;
 
     if ($error == 0) {
-        $row = mysqli_fetch_assoc($resultGetGebruiker);
-        $hased_wachtwoord = $row["wachtwoord"];
-
-        if (mysqli_num_rows($resultGetGebruiker) == 1) {
+        if ($row -> num_rows == 1) {
+            $row = $row -> fetch_assoc();
+            $hased_wachtwoord = $row["wachtwoord"];
             if(password_verify($wachtwoord, $hased_wachtwoord)){
                 $_SESSION["login"] = true;
                 $_SESSION["emailadres"] = $emailadres;
+                $_SESSION["verified"] = $row["verified"];
                 $locatie = "Location: ../index.php";
             }else{
                 $_SESSION["wachtwoordErr"] = "Wachtwoord is niet correct!";
@@ -56,6 +57,8 @@ if (mysqli_connect_error()) {
         } else {
             $_SESSION["emailErr"] = "Dit emailadres staat niet bij ons geregistreerd";
         }
+
+
     }
 
 

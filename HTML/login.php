@@ -29,33 +29,49 @@ session_start();
         <a class="navigationButton" href="../index.php#OverOns">Over Professional Pills</a>
         <a class="navigationButton" href="../index.php#Contact">Contact</a>
 
-        <a class="navigationButton active" href="login.php" style="float: right;">Login</a>
+        <?php if ($_SESSION["login"] == true) : ?>
+            <a class="navigationButton" href="../PHP/uitloggen.php" style="float: right;">Uitloggen</a>
+            <?php if ($_SESSION["verified"] == 'true') : ?>
+                <a class="navigationButton" href="status.php" style="float: right;">Status</a>
+            <?php else : ?>
+                <a class="navigationButton" href="verify.php" style="float: right;">Verifiëren</a>
+            <?php endif; ?>
+        <?php else : ?>
+            <a class="navigationButton" href="login.php" style="float: right;">Inloggen</a>
+        <?php endif; ?>
     </section>
 
     <section class="content">
-        <form action="../PHP/loginController.php" method="POST">
-            <label><b>Emailadres</b>
-                <input type="text" placeholder="Emailadres" name="emailadres" value="<?php echo $_GET["emailadres"]; ?>" >
-            </label>
-            <span class="error"><?php echo $_SESSION["emailErr"]; ?></span>
+        <?php if ($_SESSION["login"] == false) : ?>
+            <form action="../PHP/loginController.php" method="POST">
+                <label><b>Emailadres</b>
+                    <input type="text" placeholder="Emailadres" name="emailadres"
+                           value="<?php echo $_GET["emailadres"]; ?>" required>
+                </label>
+                <span class="error"><?php echo $_SESSION["emailErr"]; ?></span>
 
-            <label><b>Wachtwoord</b>
-                <input type="password" placeholder="Wachtwoord" name="wachtwoord" >
-            </label>
-            <span class="error"><?php echo $_SESSION["wachtwoordErr"]; ?></span>
+                <label><b>Wachtwoord</b>
+                    <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
+                </label>
+                <span class="error"><?php echo $_SESSION["wachtwoordErr"]; ?></span>
 
-            <button type="submit">Inloggen</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Laat mij ingelogd blijven
-            </label>
-        </form>
+                <button type="submit">Inloggen</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Laat mij ingelogd blijven
+                </label>
+            </form>
 
 
-        <div class="aanmelden">
-            <span id="wachtwoord"><a href="#">Wachtwoord</a> vergeten?</span>
-            <p>Geen account?</p>
-            <a href=registreren.php>klik hier om aan te melden</a>
-        </div>
+            <div class="aanmelden">
+                <span id="wachtwoord"><a href="#">Wachtwoord</a> vergeten?</span>
+                <p>Geen account?</p>
+                <a href=registreren.php>klik hier om aan te melden</a>
+            </div>
+        <?php else : ?>
+            <br><br>
+            <h2>U bent al ingelogd.</h2>
+            <br><br>
+        <?php endif; ?>
     </section>
 
     <footer id="footer">

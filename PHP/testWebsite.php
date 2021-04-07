@@ -1,5 +1,25 @@
 <?php
 session_start();
+
+//database informatie
+$host = "localhost";
+$dbUsername = "root";
+$dbPassword = "6A&tGbMgB$";
+$dbName = "ProfessionalPills";
+
+// Creeert connectie met database
+$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+
+$emailadres = $_SESSION["emailadres"];
+
+// get status informatie
+$getCodeQuery = "SELECT * FROM `verificatie` WHERE emailadres = ?;";
+$getCode = $conn -> prepare($getCodeQuery);
+$getCode -> bind_param('s', $emailadres);
+$getCode -> execute();
+$rowCode = $getCode -> get_result() -> fetch_assoc();
+
+$verificatieCode = $rowCode["token"];
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +28,7 @@ session_start();
 <head>
     <title>Website</title>
     <link href="../CSS/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css"/>
+    <link href="../CSS/login.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -32,12 +52,12 @@ session_start();
         <?php if ($_SESSION["login"] == true) : ?>
             <a class="navigationButton" href="../PHP/uitloggen.php" style="float: right;">Uitloggen</a>
             <?php if ($_SESSION["verified"] == 'true') : ?>
-                <a class="navigationButton active" href="status.php" style="float: right;">Status</a>
+                <a class="navigationButton" href="../HTML/status.php" style="float: right;">Status</a>
             <?php else : ?>
-                <a class="navigationButton" href="verify.php" style="float: right;">Verifiëren</a>
+                <a class="navigationButton active" href="../HTML/verify.php" style="float: right;">Verifiëren</a>
             <?php endif; ?>
         <?php else : ?>
-            <a class="navigationButton" href="login.php" style="float: right;">Inloggen</a>
+            <a class="navigationButton" href="../HTML/login.php" style="float: right;">Inloggen</a>
         <?php endif; ?>
 
     </section>
@@ -45,26 +65,9 @@ session_start();
 
     <section class="content">
         <div class="inhoud">
-            <h1>Status</h1>
+            <h1 style="padding-top: 20px; text-decoration: underline overline;">Verifiëren</h1>
             <?php if ($_SESSION["login"] == true) : ?>
-                <?php include "../PHP/getStatus.php"; ?>
-
-
-                <?php if ($_SESSION["verified"] == 'true') : ?>
-                    <?php include "../PHP/getStatus.php"; ?>
-
-                    <p>Goedendag <?php echo "$naam"; ?>, </p>
-                    <br>
-                    <p>U staat op de <b><?php echo "$positieWachtrij"; ?>e </b>plek in de wachtrij.</p>
-                    <p>Het ziekenhuis waar U staat ingeschreven is <b>'<?php echo "$ziekenhuis"; ?>'</b>
-                        in <b><?php echo "$ziekenhuisPlaats"; ?></b> - <b><?php echo "$ziekenhuisProvincie"; ?></b></p>
-
-                <?php else : ?>
-                    <br><br>
-                    <h2>U moet uw emailadres nog verifiëren om dit te kunnen zien.</h2>
-                    <h4>Klik <a href="login.php">hier</a> om uw emailadres te verifiëren.</h4>
-                    <br><br>
-                <?php endif; ?>
+               <p>je verificatie code is: <?php echo $verificatieCode; ?></p>
             <?php else : ?>
                 <br><br>
                 <h2>U moet ingelogd zijn om dit te kunnen zien.</h2>

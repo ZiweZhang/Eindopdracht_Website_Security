@@ -29,10 +29,20 @@ session_start();
         <a class="navigationButton" href="../index.php#OverOns">Over Professional Pills</a>
         <a class="navigationButton" href="../index.php#Contact">Contact</a>
 
-        <a class="navigationButton" href="login.php" style="float: right;">Login</a>
+        <?php if ($_SESSION["login"] == true) : ?>
+            <a class="navigationButton" href="../PHP/uitloggen.php" style="float: right;">Uitloggen</a>
+            <?php if ($_SESSION["verified"] == 'true') : ?>
+                <a class="navigationButton" href="status.php" style="float: right;">Status</a>
+            <?php else : ?>
+                <a class="navigationButton" href="verify.php" style="float: right;">Verifiëren</a>
+            <?php endif; ?>
+        <?php else : ?>
+            <a class="navigationButton" href="login.php" style="float: right;">Inloggen</a>
+        <?php endif; ?>
     </section>
 
     <section class="content">
+        <?php if ($_SESSION["login"] == false) : ?>
         <form method="POST" action="../PHP/registrerenController.php">
             <div class="container">
                 <label><b>Naam</b><br>
@@ -149,6 +159,12 @@ session_start();
             </div>
 
         </form>
+        <?php else : ?>
+            <br><br>
+            <h2>Log eerst uit om een nieuw account aan te maken.</h2>
+            <a class="navigationButton" href="../PHP/uitloggen.php">Uitloggen</a>
+            <br><br>
+        <?php endif; ?>
     </section>
 
     <footer id="footer">

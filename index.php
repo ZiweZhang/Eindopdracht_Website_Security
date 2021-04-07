@@ -31,7 +31,11 @@ session_start();
 
         <?php if ($_SESSION["login"] == true) : ?>
             <a class="navigationButton" href="PHP/uitloggen.php" style="float: right;">Uitloggen</a>
-            <a class="navigationButton" href="HTML/status.php" style="float: right;">Status</a>
+            <?php if ($_SESSION["verified"] == 'true') : ?>
+                <a class="navigationButton" href="HTML/status.php" style="float: right;">Status</a>
+            <?php else : ?>
+                <a class="navigationButton" href="HTML/verify.php" style="float: right;">Verifiëren</a>
+            <?php endif; ?>
         <?php else : ?>
             <a class="navigationButton" href="HTML/login.php" style="float: right;">Inloggen</a>
         <?php endif; ?>
@@ -132,7 +136,7 @@ session_start();
                 facilisi. Mauris in elit mauris. Etiam nulla sem, iaculis eu augue eget, suscipit sagittis dui. Etiam
                 cursus dui et dignissim aliquet. Nulla facilisi. Morbi efficitur eros eget est viverra egestas.</p>
 
-                <h3>Klik <a href="HTML/registreren.php">hier</a> om te registreren!</h3>
+            <h3>Klik <a href="HTML/registreren.php">hier</a> om te registreren!</h3>
         </div>
 
         <div class="inhoud">

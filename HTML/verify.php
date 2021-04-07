@@ -8,7 +8,7 @@ session_start();
 <head>
     <title>Website</title>
     <link href="../CSS/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../CSS/index.css" rel="stylesheet" type="text/css"/>
+    <link href="../CSS/login.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -32,9 +32,9 @@ session_start();
         <?php if ($_SESSION["login"] == true) : ?>
             <a class="navigationButton" href="../PHP/uitloggen.php" style="float: right;">Uitloggen</a>
             <?php if ($_SESSION["verified"] == 'true') : ?>
-                <a class="navigationButton active" href="status.php" style="float: right;">Status</a>
+                <a class="navigationButton" href="status.php" style="float: right;">Status</a>
             <?php else : ?>
-                <a class="navigationButton" href="verify.php" style="float: right;">Verifiëren</a>
+                <a class="navigationButton active" href="verify.php" style="float: right;">Verifiëren</a>
             <?php endif; ?>
         <?php else : ?>
             <a class="navigationButton" href="login.php" style="float: right;">Inloggen</a>
@@ -45,24 +45,23 @@ session_start();
 
     <section class="content">
         <div class="inhoud">
-            <h1>Status</h1>
+            <h1 style="padding-top: 20px; text-decoration: underline overline;">Verifiëren</h1>
             <?php if ($_SESSION["login"] == true) : ?>
-                <?php include "../PHP/getStatus.php"; ?>
+                <?php if ($_SESSION["verified"] == 'false') : ?>
+                    <form action="../PHP/verificatieController.php" method="POST">
+                        <label><b>Vul hier uw verificatie code in</b>
+                            <input type="text" placeholder="Verificatie Code" name="verificatieCode" ;" >
+                        </label>
+                        <span class="error"><?php echo $_SESSION["verificatieErr"]; ?></span>
 
 
-                <?php if ($_SESSION["verified"] == 'true') : ?>
-                    <?php include "../PHP/getStatus.php"; ?>
-
-                    <p>Goedendag <?php echo "$naam"; ?>, </p>
-                    <br>
-                    <p>U staat op de <b><?php echo "$positieWachtrij"; ?>e </b>plek in de wachtrij.</p>
-                    <p>Het ziekenhuis waar U staat ingeschreven is <b>'<?php echo "$ziekenhuis"; ?>'</b>
-                        in <b><?php echo "$ziekenhuisPlaats"; ?></b> - <b><?php echo "$ziekenhuisProvincie"; ?></b></p>
-
+                        <button type="submit" name="bevestigen">Bevestigen</button>
+                        <button type="submit" name="mailOpnieuwSturen" style="background-color: gray">Mail opnieuw sturen
+                        </button>
+                    </form>
                 <?php else : ?>
                     <br><br>
-                    <h2>U moet uw emailadres nog verifiëren om dit te kunnen zien.</h2>
-                    <h4>Klik <a href="login.php">hier</a> om uw emailadres te verifiëren.</h4>
+                    <h2>U heeft al uw emailadres geverifieerd.</h2>
                     <br><br>
                 <?php endif; ?>
             <?php else : ?>
